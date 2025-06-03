@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bereavement Support Chatbot</title>
+    <style>
+        body {
+            font-family: Georgia, serif;
+            background-color: #f4f1ec;
+            color: #333;
+            padding: 2em;
+            text-align: center;
+        }
+        .chatbox {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 2em;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 0.5em;
+            font-size: 1em;
+        }
+        input[type="submit"] {
+            padding: 0.5em 1em;
+            font-size: 1em;
+        }
+        .response {
+            margin-top: 1.5em;
+            font-size: 1.2em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="chatbox">
+        <h1>🌸 Bereavement Support</h1>
+        <p>Type a message. Try: <strong>reflect</strong>, <strong>breathe</strong>, or anything you feel.</p>
+        <form method="POST">
+            <input type="text" name="message" placeholder="Your message here" required>
+            <input type="submit" value="Send">
+        </form>
+
+        <div class="response">
+            {% for pair in history %}
+                <p><strong>You:</strong> {{ pair.user }}</p>
+                <p><strong>Bot:</strong> {{ pair.bot }}</p>
+                <hr style="border: none; border-top: 1px solid #eee;">
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
